@@ -33,7 +33,6 @@ export default {
     // So in compostion API the below lines code 47 to 55 are used to develop the computed property,also note that the "==>" can be replaced
     // with 'function' keyword,basically the "computed()" takes a getter function and returns a randomly reactive ref object
     const pages = computed(() => {
-
       var pages = [];
       // so in below code,lastpae.value will be used to access the inner value 0
       for (var i = 1; i <= lastPage.value; i++) {
