@@ -8,6 +8,10 @@ thats why we have key="booking._id" and as such it will serve as the key to "v-f
       <tr v-for="booking in bookings" :key="booking._id">
         <td>{{ booking._id }}</td>
         <td>{{ booking.email }}</td>
+        <td>
+           <!-- Clicking on the below link we take us to another component -->
+          <router-link :to="`/booking/${booking._id}`">Details</router-link>
+        </td>
       </tr>
     </table>
     <!-- also below we use v-for for the pages where pages is the array holding all the page numbers and also the v-binding expects a 
@@ -24,7 +28,7 @@ export default {
   props: {
     msg: String
   },
-  //  so "lastpage" in "const lastpage" below is a reactive object that holds the inner value "0"  and in order to access this inner value
+    // so "lastpage" in "const lastpage" below is a reactive object that holds the inner value "0"  and in order to access this inner value
   // we have to use ".value"
   setup() {
     const bookings = ref([]);
