@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-
     <!-- so below we use "v-for" to iterate on the instance property,we do this by iterating booking over bookings so that the code
 on line 8 and 9 will help display  booking id and booking email respectively,we also need to provide the primary key of the bookings array
 thats why we have key="booking._id" and as such it will serve as the key to "v-for loop"  -->
@@ -8,21 +7,23 @@ thats why we have key="booking._id" and as such it will serve as the key to "v-f
       <tr v-for="booking in bookings" :key="booking._id">
         <td>{{ booking._id }}</td>
         <td>{{ booking.email }}</td>
+        <td>
+          <router-link :to="`/booking/${booking._id}`">Details</router-link>
+        </td>
       </tr>
     </table>
     <!-- also below we use v-for for the pages where pages is the array holding all the page numbers and also the v-binding expects a 
     unique key thats why we set 'key=i' -->
     <button v-for="i in pages" :key="i" @click="fetchPage(i)">{{ i }}</button>
-
   </div>
 </template>
 
 <script>
 import { ref, onMounted, computed } from "vue";
 export default {
-  name: 'PaginatedBookings',
+  name: "PaginatedBookings",
   props: {
-    msg: String
+    msg: String,
   },
   //  so "lastpage" in "const lastpage" below is a reactive object that holds the inner value "0"  and in order to access this inner value
   // we have to use ".value"
@@ -36,21 +37,21 @@ export default {
       var pages = [];
       // so in below code,lastpae.value will be used to access the inner value 0
       for (var i = 1; i <= lastPage.value; i++) {
-        pages.push(i)
+        pages.push(i);
       }
 
       return pages;
     });
     const fetchPage = async function (page) {
-
-      var response = await fetch("/api/bookings?perPage=" + perPage.value + "&page=" + page);
+      var response = await fetch(
+        "/api/bookings?perPage=" + perPage.value + "&page=" + page
+      );
 
       if (response.ok) {
         var data = await response.json();
 
         bookings.value = data.bookings;
-        lastPage.value = data.pages
-
+        lastPage.value = data.pages;
       } else {
         alert(response.statusText);
       }
@@ -65,10 +66,10 @@ export default {
     return {
       bookings,
       pages,
-      fetchPage
+      fetchPage,
     };
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
