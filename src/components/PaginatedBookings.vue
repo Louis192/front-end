@@ -8,10 +8,7 @@ thats why we have key="booking._id" and as such it will serve as the key to "v-f
         <td>{{ booking._id }}</td>
         <td>{{ booking.email }}</td>
         <td>
-<<<<<<< HEAD
-=======
            <!-- Clicking on the below link we take us to another component -->
->>>>>>> 117c001c9f531e67dff6353148ff374f516ed8f3
           <router-link :to="`/booking/${booking._id}`">Details</router-link>
         </td>
       </tr>
