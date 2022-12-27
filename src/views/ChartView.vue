@@ -1,41 +1,40 @@
-<template>
+<!-- <template>
   <div>
-    <apexchart width="880" type="donut" :options="options" :series="series">
-    </apexchart>
+    <apexchart width="380" type="donut" :options="options" :series="series"></apexchart>
   </div>
-  <div>
-  <apexchart type="bar" height="350" :options="options" :series="series">
-  </apexchart>
-</div>
-</template>
+</template> -->
 
+<!-- <template>
+  <div>
+    <apexchart width="380" type="donut" :options="options" :series="series"></apexchart>
+  </div>
+  </template> -->
+
+<!-- 
 <script>
-// @ is an alias to /src
-import { ref, onMounted } from "vue";
+import { ref} from "vue";
 
 export default {
-  name: "ChartView",
+  name: 'ChartView',
   setup() {
     const options = ref({});
     const series = ref([44, 55, 41, 17, 15]);
-
     
 
-    onMounted(async () => {
-      var response = await fetch("/api/bookings/aggregate/groupby");
+      return {
+      options, series
+    }
+  }
+}
 
-      if (response.ok) {
-        var heroes = await response.json();
+</script> -->
+<!-- import VueApexCharts from "vue3-apexcharts";
 
-        series.value = heroes.map((a) => a.count);
-        options.value = { labels: heroes.map((a) => a._id) };
-      }
-    });
+const app = createApp(App);
+app.use(VueApexCharts); -->
 
-    return {
-      options,
-      series,
-    };
-  },
-};
-</script>
+<!-- <template>
+<div>
+  <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+</div>
+</template> -->
